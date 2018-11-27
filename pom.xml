@@ -3,7 +3,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>paper-ripple</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>paper-ripple</name>
     <description>Integration of paper-ripple for Vaadin 11</description>
 
