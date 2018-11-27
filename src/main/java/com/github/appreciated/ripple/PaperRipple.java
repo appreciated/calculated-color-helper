@@ -3,10 +3,12 @@ package com.github.appreciated.ripple;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
-import com.vaadin.flow.dom.Style;
 
 @Tag("paper-ripple")
 @HtmlImport("bower_components/paper-ripple/paper-ripple.html")
+/**
+ * This Component can be used to add a specific click effect to a component that usually lacks of one.
+ */
 public class PaperRipple extends Component {
 
     public PaperRipple() {

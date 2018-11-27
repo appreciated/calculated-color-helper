@@ -3,9 +3,11 @@ package com.github.appreciated;
 import com.github.appreciated.ripple.PaperRippleDiv;
 import com.github.appreciated.ripple.PaperRippleHorizontalLayout;
 import com.github.appreciated.ripple.PaperRippleVerticalLayout;
+import com.vaadin.flow.component.ClickNotifier;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
@@ -20,8 +22,11 @@ public class DemoView extends VerticalLayout {
     }
 
     Component getLayout(Component component) {
-        if (component instanceof HasComponents){
+        if (component instanceof HasComponents) {
             ((HasComponents) component).add(new Label("Test"));
+        }
+        if (component instanceof ClickNotifier) {
+            ((ClickNotifier) component).addClickListener(clickEvent -> Notification.show("clicked!"));
         }
         component.getElement().getStyle()
                 .set("border", "1px solid black")

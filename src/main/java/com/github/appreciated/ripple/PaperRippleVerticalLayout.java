@@ -1,9 +1,10 @@
 package com.github.appreciated.ripple;
 
+import com.vaadin.flow.component.ClickNotifier;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class PaperRippleVerticalLayout extends VerticalLayout {
+public class PaperRippleVerticalLayout extends VerticalLayout implements ClickNotifier {
     public PaperRippleVerticalLayout() {
         getStyle().set("position", "relative");
         add(getRipple());
