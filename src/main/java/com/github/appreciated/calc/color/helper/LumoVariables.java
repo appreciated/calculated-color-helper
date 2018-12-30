@@ -2,7 +2,7 @@ package com.github.appreciated.calc.color.helper;
 
 import java.util.Arrays;
 
-public class LimoVariables {
+public class LumoVariables {
     public static final String LUMO_BORDER_RADIUS = "--lumo-border-radius";
     public static final String LUMO_BOX_SHADOW_S = "--lumo-box-shadow-s";
     public static final String LUMO_BOX_SHADOW_M = "--lumo-box-shadow-m";

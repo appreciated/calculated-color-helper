@@ -7,7 +7,7 @@ import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
-import static com.github.appreciated.calc.color.helper.LimoVariables.LUMO_PRIMARY_TEXT_COLOR;
+import static com.github.appreciated.calc.color.helper.LumoVariables.LUMO_PRIMARY_TEXT_COLOR;
 
 @Route("")
 @Push
