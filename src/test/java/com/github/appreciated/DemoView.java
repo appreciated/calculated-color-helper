@@ -1,37 +1,27 @@
 package com.github.appreciated;
 
-import com.github.appreciated.ripple.PaperRippleDiv;
-import com.github.appreciated.ripple.PaperRippleHorizontalLayout;
-import com.github.appreciated.ripple.PaperRippleVerticalLayout;
-import com.vaadin.flow.component.ClickNotifier;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasComponents;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.notification.Notification;
+import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Push;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
+import static com.github.appreciated.calc.color.helper.LimoVariables.LUMO_PRIMARY_TEXT_COLOR;
+
 @Route("")
+@Push
 public class DemoView extends VerticalLayout {
 
     public DemoView() {
-        add(getLayout(new PaperRippleDiv()));
-        add(getLayout(new PaperRippleHorizontalLayout()));
-        add(getLayout(new PaperRippleVerticalLayout()));
-        setAlignItems(Alignment.CENTER);
+        CalculatedColorHelper helper = new CalculatedColorHelper();
+        TextField field = new TextField();
+        add(
+                helper,
+                field,
+                new Button("Update", buttonClickEvent -> helper.getCalculatedColor(LUMO_PRIMARY_TEXT_COLOR, result -> field.setValue(result))),
+                new Button("SetValue", buttonClickEvent -> helper.setCalculatedColor(LUMO_PRIMARY_TEXT_COLOR, field.getValue()))
+        );
     }
 
-    Component getLayout(Component component) {
-        if (component instanceof HasComponents) {
-            ((HasComponents) component).add(new Label("Test"));
-        }
-        if (component instanceof ClickNotifier) {
-            ((ClickNotifier) component).addClickListener(clickEvent -> Notification.show("clicked!"));
-        }
-        component.getElement().getStyle()
-                .set("border", "1px solid black")
-                .set("width", "300px")
-                .set("height", "50px");
-        return component;
-    }
 }
