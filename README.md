@@ -1,6 +1,6 @@
-# paper-ripple
+# calculated-color-helper
 
-Vaadin 10 Java integration of https://github.com/PolymerElements/paper-ripple
+This is a helper Component for Vaadin Flow to get the [calculated Styles for an element](https://developer.mozilla.org/de/docs/Web/API/Window/getComputedStyle)
 
 ## Development instructions
 
