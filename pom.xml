@@ -3,7 +3,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>calculated-color-helper</artifactId>
-    <version>1.0</version>
+    <version>0.5</version>
     <name>calculated-color-helper</name>
     <description>Helper Component to get the calculated-color for Vaadin 10</description>
 
