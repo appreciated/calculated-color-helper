@@ -1,22 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>calculated-color-helper</artifactId>
-    <version>0.5</version>
+    <version>2.0.0.SNAPSHOT</version>
     <name>calculated-color-helper</name>
-    <description>Helper Component to get the calculated-color for Vaadin 10</description>
+    <description>Helper Component to get the calculated-color for Vaadin 14</description>
 
     <properties>
-        <vaadin.version>10.0.7</vaadin.version>
-
+        <jetty.version>9.4.15.v20190215</jetty.version>
+        <vaadin.version>14.0.1</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <organization>
-        <name>Johannes Goebel</name>
+        <name>appreciated</name>
     </organization>
     <licenses>
         <license>
@@ -64,15 +66,18 @@
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.0</version>
                 <configuration>
                     <archive>
                         <index>true</index>
@@ -90,19 +95,35 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.7.v20160115</version>
+                <version>${jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>-1</scanIntervalSeconds>
-                    <!-- Use test scope because the UI/demo classes are in 
+                    <!-- Use test scope because the UI/demo classes are in
                         the test package. -->
                     <useTestScope>true</useTestScope>
-                    <webAppConfig>
-                        <!-- This is only needed to be able to unzip webjars 
-                            directly into src/test/webjar-debug and modify them for testing -->
-
-                        <resourceBase>src/main/resources/META-INF/resources</resourceBase>
-                    </webAppConfig>
+                    <supportedPackagings>
+                        <supportedPackaging>jar</supportedPackaging>
+                    </supportedPackagings>
+                    <stopKey>${project.artifactId}</stopKey>
+                    <stopPort>8081</stopPort>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                            <goal>build-frontend</goal>
+                        </goals>
+                        <configuration>
+                            <convertHtml>false</convertHtml>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -115,7 +136,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-assembly-plugin</artifactId>
-                        <version>2.6</version>
+                        <version>3.1.0</version>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>
@@ -148,7 +169,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.10.4</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>

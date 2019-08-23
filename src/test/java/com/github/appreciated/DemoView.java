@@ -19,7 +19,7 @@ public class DemoView extends VerticalLayout {
         add(
                 helper,
                 field,
-                new Button("Update", buttonClickEvent -> helper.getCalculatedColor(LUMO_PRIMARY_TEXT_COLOR, result -> field.setValue(result))),
+                new Button("Update", buttonClickEvent -> helper.getCalculatedColor(field::setValue, LUMO_PRIMARY_TEXT_COLOR)),
                 new Button("SetValue", buttonClickEvent -> helper.setCalculatedColor(LUMO_PRIMARY_TEXT_COLOR, field.getValue()))
         );
     }
