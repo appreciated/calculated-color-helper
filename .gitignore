@@ -7,3 +7,5 @@
 .classpath
 .project
 **/target/
+/webpack.config.js
+/webpack.generated.js

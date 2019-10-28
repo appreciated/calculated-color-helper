@@ -2,6 +2,7 @@ package com.github.appreciated;
 
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
@@ -14,6 +15,7 @@ import static com.github.appreciated.calc.color.helper.LumoVariables.LUMO_PRIMAR
 public class DemoView extends VerticalLayout {
 
     public DemoView() {
+        VaadinIcon.CLOSE_SMALL.create();
         CalculatedColorHelper helper = new CalculatedColorHelper();
         TextField field = new TextField();
         add(
