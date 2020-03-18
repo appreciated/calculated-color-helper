@@ -10,7 +10,7 @@
     <description>Helper Component to get the calculated-color for Vaadin 14</description>
 
     <properties>
-        <jetty.version>9.4.15.v20190215</jetty.version>
+        <jetty.version>9.4.27.v20200227</jetty.version>
         <vaadin.version>14.0.11</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
