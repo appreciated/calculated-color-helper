@@ -5,25 +5,13 @@ class CalcColorHelper extends PolymerElement {
         return 'calculated-color-helper'
     }
 
-    static get properties() {
-        return {
-            names: String,
-            values: String
-        }
-    }
-
-    getValuesForCssAttributes() {
-        if (this.names != null) {
-            console.log(this.names);
-            var variables = Object.keys(JSON.parse(this.names));
-            var keys = Object.keys(JSON.parse(this.names));
-            console.log(keys);
+    getValuesForCssAttributes(keys) {
+        if (keys != null) {
+            const values = [];
             for (var i = 0; i < keys.length; i++) {
-                variables[i] = getComputedStyle(this).getPropertyValue(variables[i]).trim();
+                values.push({"key": keys[i], "value": getComputedStyle(this).getPropertyValue(keys[i]).trim()});
             }
-            this.values = JSON.stringify(variables)
-            console.log(this.values);
-            this.dispatchEvent(new CustomEvent('values-changed'));
+            return values;
         }
     }
 }
